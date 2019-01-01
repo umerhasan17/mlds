@@ -27,4 +27,4 @@ def pullData2(stock):
 #     except Exception, e:
 #         print 'main loop', str(e)
 
-print("Hello")
+print(pullData2("AAPL"))
