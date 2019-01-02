@@ -50,4 +50,3 @@ ax2.bar(df.index, df['Volume'])
 
 plt.show()
 
-# DATA MANIPULATION resampling
