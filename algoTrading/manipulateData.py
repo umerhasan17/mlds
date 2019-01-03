@@ -3,6 +3,11 @@ import pandas_datareader.data as web
 import pickle
 import datetime as dt
 import os
+import matplotlib.pyplot as plt
+from matplotlib import style
+
+style.use('ggplot')
+
 
 def compile_data():
     with open ("sp500tickers.pickle", "rb") as f:
@@ -30,4 +35,12 @@ def compile_data():
     print(main_df.head())
     main_df.to_csv('sp500_joined_closes.csv')
 
-compile_data()
+def visualize_data():
+    df = pd.read_csv('sp500_joined_closes.csv')
+    df_corr = df.corr()
+    print(df_corr.head())
+
+    
+
+visualize_data()
+    
