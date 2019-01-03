@@ -102,6 +102,18 @@ def buy_sell_hold(*args):
             return -1
     return 0
 
+def extract_featuresets(ticker):
+    tickers, df = process_data_for_labels(ticker)
+    
+    df['{}_target'.format(ticker)] = list(map(buy_sell_hold, 
+                                              df['{}_1d'.format(ticker, i)],
+                                              df['{}_2d'.format(ticker, i)],
+                                              df['{}_3d'.format(ticker, i)],
+                                              df['{}_4d'.format(ticker, i)],
+                                              df['{}_5d'.format(ticker, i)],
+                                              df['{}_6d'.format(ticker, i)],
+                                              df['{}_7d'.format(ticker, i)],
+                                            ))
 
 
     
