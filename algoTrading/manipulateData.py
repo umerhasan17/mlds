@@ -11,9 +11,12 @@ def compile_data():
     main_df = pd.DataFrame()
 
     for count, ticker in enumerate(tickers):
-        df = pd.read_csv('stock_dfs/{}.csv'.format(ticker))
+        try:
+            df = pd.read_csv('stock_dfs/{}.csv'.format(ticker))
+        except:
+            break
         df.set_index('Date', inplace=True)
-        df.rename(columns= {'Adj Close', ticker}, inplace=True)
+        df.rename(columns= {'Adj Close': ticker}, inplace=True)
         df.drop(['Open', 'High', 'Low', 'Close', 'Volume'], 1, inplace=True)
 
         if main_df.empty:
@@ -25,6 +28,6 @@ def compile_data():
             print(count)
     
     print(main_df.head())
-    main_df.tocsv('sp500_joined_closes.csv')
+    main_df.to_csv('sp500_joined_closes.csv')
 
 compile_data()

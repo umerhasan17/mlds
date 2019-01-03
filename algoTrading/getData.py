@@ -4,7 +4,7 @@ import pickle
 import datetime as dt
 import os
 
-start = dt.datetime(2000,1,1)
+start = dt.datetime(2014,1,1)
 end = dt.datetime(2019,1,1)
 
 def get_data_from_yahoo(reload_sp500=False):
