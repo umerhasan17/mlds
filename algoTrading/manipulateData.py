@@ -89,8 +89,19 @@ def process_data_for_labels(ticker):
 
 # features - percent change 
 # labels - buy, sell, hold
-def buy_sell_hold():
-    
+def buy_sell_hold(*args):
+    # passing in whole week of percent changes
+    cols = [c for c in args]
+    # if stock price changes more than 2 percent in a week (buy/sell)
+    requirement = 0.02
+
+    for col in cols:
+        if col > requirement:
+            return 1
+        if col < -requirement:
+            return -1
+    return 0
+
 
 
     
