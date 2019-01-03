@@ -9,7 +9,7 @@ from matplotlib import style
 
 style.use('ggplot')
 
-
+# creating compiled csv of all Adj Close stocks
 def compile_data():
     with open ("sp500tickers.pickle", "rb") as f:
         tickers = pickle.load(f)
@@ -66,6 +66,31 @@ def visualize_data():
     heatmap.set_clim(-1,1)
     plt.tight_layout()
     plt.show()
+
+# generally companies move together as shown by the heatmap. 
+# however they may lag behind each other. 
+# this function tries to identify the lag. 
+# the time scale should be 1 / 2 years for this strategy as company relations change overtime. 
+def process_data_for_labels(ticker):
+    # the time tange we are working with
+    hm_days = 7
+    df = pd.read_csv('sp500_joined_closes.csv', index_col=0)
+    tickers = df.columns.values.tolist()
+    df.fillna(0, inplace=True)
+
+    for i in range(1, hm_days+1):
+        # get the value for the stock a specific number of days in the future
+        # -i to get future data
+        df['{}_{}d'.format(ticker, i)] = (df[ticker].shift(-i) - df[ticker]) / df[ticker]
+
+    df.fillna(0, inplace=True)
+
+    return tickers, df
+
+# features - percent change 
+# labels - buy, sell, hold
+def buy_sell_hold():
+    
 
 
     
