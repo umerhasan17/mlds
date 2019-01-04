@@ -7,6 +7,8 @@ import os
 import matplotlib.pyplot as plt
 from matplotlib import style
 from collections import Counter
+from sklearn import svm, model_selection, neighbors
+from sklearn.ensemble import VotingClassifier, RandomForestClassifier
 
 style.use('ggplot')
 
@@ -139,3 +141,34 @@ def extract_featuresets(ticker):
 
     return X, y, df
 
+def do_ml(ticker):
+    X, y, df = extract_featuresets(ticker)
+
+    X_train, X_test, y_train, y_test = model_selection.train_test_split(X,
+                                                                         y,
+                                                                         test_size = 0.25)
+    
+    # example of a simple classifier
+    # clf = neighbors.KNeighborsClassifier()
+
+    # more complicated classifier
+    clf = VotingClassifier([('lsvc', svm.LinearSVC()),
+                            ('knn', neighbors.KNeighborsClassifier()),
+                            ('rfor', RandomForestClassifier())])
+
+    clf.fit(X_train, y_train)
+
+    confidence = clf.score(X_test, y_test)
+    predictions = clf.predict(X_test)
+
+    # what kind of predictions are we making
+    # are they skewed at all
+    # the classifier might just decide on 1 'best' value which is bad
+    print ('Accuracy: ', confidence)
+    print ('Predicted spread: ', Counter(predictions)) 
+
+    return confidence
+
+do_ml('BAC')
+
+    
