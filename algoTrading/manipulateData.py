@@ -121,4 +121,12 @@ def extract_featuresets(ticker):
     str_vals = [str(i) for i in vals]
     print ('Data spread: ', Counter(str_vals))
 
+    df.fillna(0, inplace=True)
     
+    # replace infinite changes with np.nan - e.g. when dealing with 0s in percentages
+    df = df.replace([np.inf, -np.inf], np.nan)
+    # now drop the NaNs
+    df.dropna(inplace=True)
+
+
+
