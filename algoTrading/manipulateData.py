@@ -96,7 +96,7 @@ def buy_sell_hold(*args):
     # passing in whole week of percent changes
     cols = [c for c in args]
     # if stock price changes more than 2 percent in a week (buy/sell)
-    requirement = 0.02
+    requirement = 0.028
 
     for col in cols:
         if col > requirement:
