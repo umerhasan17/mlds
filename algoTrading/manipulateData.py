@@ -6,6 +6,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from matplotlib import style
+from collections import Counter
 
 style.use('ggplot')
 
@@ -105,6 +106,7 @@ def buy_sell_hold(*args):
 def extract_featuresets(ticker):
     tickers, df = process_data_for_labels(ticker)
     
+    # TODO refactor this code maybe using a list comprehension
     df['{}_target'.format(ticker)] = list(map(buy_sell_hold, 
                                               df['{}_1d'.format(ticker, i)],
                                               df['{}_2d'.format(ticker, i)],
@@ -115,5 +117,8 @@ def extract_featuresets(ticker):
                                               df['{}_7d'.format(ticker, i)],
                                             ))
 
+    vals = df['{}_target'.format(ticker)].values.tolist()
+    str_vals = [str(i) for i in vals]
+    print ('Data spread: ', Counter(str_vals))
 
     
