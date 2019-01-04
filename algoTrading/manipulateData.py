@@ -108,13 +108,13 @@ def extract_featuresets(ticker):
     
     # TODO refactor this code maybe using a list comprehension
     df['{}_target'.format(ticker)] = list(map(buy_sell_hold, 
-                                              df['{}_1d'.format(ticker, i)],
-                                              df['{}_2d'.format(ticker, i)],
-                                              df['{}_3d'.format(ticker, i)],
-                                              df['{}_4d'.format(ticker, i)],
-                                              df['{}_5d'.format(ticker, i)],
-                                              df['{}_6d'.format(ticker, i)],
-                                              df['{}_7d'.format(ticker, i)],
+                                              df['{}_1d'.format(ticker)],
+                                              df['{}_2d'.format(ticker)],
+                                              df['{}_3d'.format(ticker)],
+                                              df['{}_4d'.format(ticker)],
+                                              df['{}_5d'.format(ticker)],
+                                              df['{}_6d'.format(ticker)],
+                                              df['{}_7d'.format(ticker)],
                                             ))
 
     vals = df['{}_target'.format(ticker)].values.tolist()
@@ -128,5 +128,14 @@ def extract_featuresets(ticker):
     # now drop the NaNs
     df.dropna(inplace=True)
 
+    # which columns get to be the feature sets
+    # percent change from yesterday (normalised)
+    df_vals = df[[ticker for ticker in tickers]].pct_change()
+    df_vals = df_vals.replace([np.inf, -np.inf], 0)
+    df_vals.fillna(0, inplace=True)
 
+    X = df_vals.values
+    y = df['{}_target'.format(ticker)].values
+
+    return X, y, df
 
