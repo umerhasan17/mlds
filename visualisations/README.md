@@ -6,4 +6,4 @@ this is a correlation heatmap of a list of companies in the S&P 500. Clearly eac
 
 Plot of NYC taxis pickup and dropoff locations
 
-the data for this was gathered from the Kaggle competition which took place in 2018. It was also inspired by the following notebook: https://www.kaggle.com/drgilermo/dynamics-of-new-york-city-animation
+the data for this was gathered from the Kaggle competition which took place in 2018. It was inspired by the following notebook: https://www.kaggle.com/drgilermo/dynamics-of-new-york-city-animation
