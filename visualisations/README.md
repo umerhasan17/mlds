@@ -1,4 +1,4 @@
-Welcome to my portfolio of data science visualisations:
+Welcome to my portfolio of data science visualisations
 
 SPY Correlation Heapmap
 
