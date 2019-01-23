@@ -17,7 +17,19 @@ class Mark1Bot(gamelib.AlgoCore):
         game_state.submit_turn()
 
     def build_defenses(self, location_list, firewall_unit, game_state, row=None):
+        for location in location_list:
+            if not type(location) == list:
+                location = [location, row]
+
+            if game_state.can_spawn(firewall_unit, location):
+                game_state.attempt_spawn(firewall_unit, location)
+                gamelib.debug_write(f"{firewall_unit} deployed at {location}")
+                game_state._player_resources[0]['cores'] -= game_state.type_cost(firewall_unit)
+            elif not game_State.contains_stationary_unit(location):
+                return False
         
+        return True
+
 
     def defense(self, game_state):
 
