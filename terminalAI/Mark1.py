@@ -25,13 +25,29 @@ class Mark1Bot(gamelib.AlgoCore):
                 game_state.attempt_spawn(firewall_unit, location)
                 gamelib.debug_write(f"{firewall_unit} deployed at {location}")
                 game_state._player_resources[0]['cores'] -= game_state.type_cost(firewall_unit)
-            elif not game_State.contains_stationary_unit(location):
+            elif not game_state.contains_stationary_unit(location):
                 return False
         
         return True
 
 
     def defense(self, game_state):
+        # placing filters
+        filters = [[0, 13], [27, 13], [1, 12], [26, 12]]
+        if not self.build_defenses(filters, FILTER, game_state):
+            return
+        
+        row = 11
+        destructors = [2, 25, 6, 21, 11, 16]
+
+        if not self.build_defenses(destructors, DESTRUCTOR, game_state, row=row):
+            return
+
+        filters = [3, 24, 4, 23, 5, 22, 7, 20, 8, 19, 9, 18, 10, 17, 12, 15]
+
+        if not self.build_defenses(filter, FILTER, game_state):
+            return
+
 
     def attack(self, game_state):
 
