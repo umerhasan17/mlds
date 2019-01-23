@@ -45,7 +45,7 @@ class Mark1Bot(gamelib.AlgoCore):
 
         filters = [3, 24, 4, 23, 5, 22, 7, 20, 8, 19, 9, 18, 10, 17, 12, 15]
 
-        if not self.build_defenses(filter, FILTER, game_state):
+        if not self.build_defenses(filter, FILTER, game_state, row=row):
             return
 
 
