@@ -44,7 +44,8 @@ y = np.array(df['label'])
 # splitting up train and test
 X_train, X_test, y_train, y_test = model_selection.train_test_split(X, y, test_size=0.2)
 
-clf = LinearRegression()
+# clf = LinearRegression()
+clf = svm.SVR()
 clf.fit(X_train, y_train)
 accuracy = clf.score(X_test, y_test)
 # 97% accuracy
