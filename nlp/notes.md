@@ -16,3 +16,10 @@
 * Can therefore do lots of mathematical operations and analysis on words.
 * Words that have a similar context tend to have collinear vectors.
 * Similar words are similar in terms of cosine distance (similar to dot product).
+
+## First Text
+* Can throw away n-grams seen less than e.g. 5 times because it could be a typo or very uncommon phrase. 
+* Play around with tokenization to add features to sentiment e.g. an emoji or punctuation ;)
+* Add stemming or lemmatization
+* Use models other than logistic regression
+* The accuracy gain from deep learning models is slight but significant for text classification.
