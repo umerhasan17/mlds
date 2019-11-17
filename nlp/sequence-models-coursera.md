@@ -31,13 +31,24 @@ Autocorrelation graphs can reveal dependencies (how much lag is there in the dom
 
 ### Different types of models
 
+#### Linear Model
+
 The linear model uses tf.layers.dense without an activation function (no neural network) since the model is a linear combination of inputs. 
 
 > Think about the relationship between what models try to capture and the aspects of the real world. Don't fit an irrelevant model. Think about underlying relationship. For example regularisation used to penalise model weights. 
 
 > What if recency is important? Constrain the weights for better performance using exponential smoothing. Autoregressive ARMA models can be used to find relationships in moving averages. ARMA is a special case of linear models. 
 
-Using the sliding window, it is possible to model non-linear relationships by passing data into a DNN. 
+#### Deep/Artificial Neural Network (DNN/ANN)
+
+Using the sliding window, it is possible to model non-linear relationships by passing data into a DNN. DNN simply uses a non-linear combination of inputs. The solution involves adding 2 hidden layers:
+    * First one maps to 10 nodes
+    * Second one maps to 3 nodes
+
+```
+h1 = tf.layers.dense(X, 10, activation=tf.nn.relu)
+h2 = tf.layers.dense(h1, 3, activation=tf.nn.relu)
+```
 
 
 
