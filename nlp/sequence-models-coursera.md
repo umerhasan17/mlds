@@ -62,6 +62,10 @@ Steps in applying a convolution:
 > Why doesn't CNN do much better than DNN?
 The variable length problem. We can solve this using padding or bagging. Padding involves adding extra data to smaller length sequences or reducing sequences to the size of the smallest sequence. Bagging involves taking an average for each measured characteristic. Called 'bag of words' in natural language model. However, bagging disregards order. 
 
+> Remember to not leak future data in convolutions.
+
+> Dilated convolutions can catch long term dependencies - Google Wavenet uses this approach. 
+
 ### Recurrent Neural Networks
 
 RNN are used to handle variable length sequence problem. RNN recast the problem 'representing an entire variable-length sequence' -> 'representing a single event given what has come before'.
@@ -80,3 +84,8 @@ Tackle using feature engineering or let the model engineer its own features duri
 How RNNs represent the past?
 * Recurrent connection - this connects the hidden layer to the fixed size state.
 * Clevel optmisation
+
+> Deep RNNs can offer more insight but are harder to optimise. 
+
+Limitations of RNNs:
+* The exploding gradient problem where less recent data is forgotten and has no effect on the current sequence step. This can be solved using Long Short Term Memory (LSTM) or Gated Recurrent Unit (GRU). They keep gated modules. 
