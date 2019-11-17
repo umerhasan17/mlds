@@ -1,7 +1,5 @@
 # Sequence Models for Time Series and NLP
 
-## Working with sequences
-
 Sequences are data points that are meaningfully ordered. Observations at earlier time points need to provide information about future points. We can take a slice of observation to make a prediction about future sequences.
 
 ### Examples of sequences:
