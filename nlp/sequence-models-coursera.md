@@ -20,3 +20,25 @@ Sequences are data points that are meaningfully ordered. Observations at earlier
 > What's a good size for our sliding window? 
 
 Autocorrelation graphs can reveal dependencies (how much lag is there in the domain?). Sometimes dependencies are known.
+
+### Model.py walkthrough
+
+* The TIMESERIES_COL variable is the key to retrieve from features dictionary. 
+* Create_time_series generates some random frequencies, amplitudes and noise to return 50 observations for random sine function.
+* The train_and_evaluate function defines a custom estimator using the sequence regressor function. 
+* Sequence regressor specifies which model function to retrieve and also compares against a benchmark. 
+* All model functions accept features, mode and params. 
+
+### Different types of models
+
+The linear model uses tf.layers.dense without an activation function (no neural network) since the model is a linear combination of inputs. 
+
+> Think about the relationship between what models try to capture and the aspects of the real world. Don't fit an irrelevant model. Think about underlying relationship. For example regularisation used to penalise model weights. 
+
+> What if recency is important? Constrain the weights for better performance using exponential smoothing. Autoregressive ARMA models can be used to find relationships in moving averages. ARMA is a special case of linear models. 
+
+Using the sliding window, it is possible to model non-linear relationships by passing data into a DNN. 
+
+
+
+
