@@ -8,7 +8,7 @@ Sequences are data points that are meaningfully ordered. Observations at earlier
 * Movies and videos are sequences of images
 * Predicting the next X, however there are many ways of doing this.
 
-> How are images and sequences similar? 
+> How are images and sequences similar? LOCALITY 
 
 ### Types of sequences:
 * One-to-sequence: image captioning
@@ -50,6 +50,16 @@ h1 = tf.layers.dense(X, 10, activation=tf.nn.relu)
 h2 = tf.layers.dense(h1, 3, activation=tf.nn.relu)
 ```
 
+#### Convolutional Neural Network (CNN)
 
+Locality plays a role in both image recognition and sequence modelling. 
 
+Steps in applying a convolution:
+1. Flatten the input sequence.
+2. Use conv1d to apply a number of filters to the sequence.
+3. Use max_pooling1d to add some spatial invariance and downscaling.
+4. Flatten the resulting output into a sequence.
+5. Send it through a fully connected layer with the appropriate output node.
 
+> Why doesn't CNN do much better than DNN?
+The variable length problem. We can solve this using padding or bagging. Padding involves adding extra data to smaller length sequences or reducing sequences to the size of the smallest sequence. Bagging involves taking an average for each measured characteristic. Called 'bag of words' in natural language model. However, bagging disregards order. 
