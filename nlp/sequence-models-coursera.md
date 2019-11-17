@@ -64,3 +64,19 @@ The variable length problem. We can solve this using padding or bagging. Padding
 
 ### Recurrent Neural Networks
 
+RNN are used to handle variable length sequence problem. RNN recast the problem 'representing an entire variable-length sequence' -> 'representing a single event given what has come before'.
+
+Instead of accepting a fixed sized input representing sequence, they accept fixed sized representation of an event + fixed size representation what has been seen previously. 
+
+> How do we represent past in a fixed-size state? 
+Tackle using feature engineering or let the model engineer its own features during optimisation. 
+
+2 key ideas:
+1. RNNs learn a compact hidden state that represents the past.
+2. The input to an RNN is a concat of the original stateless input + hidden state.
+ 
+> THE HIDDEN STATE IS UPDATED DURING PREDICTION, unlike a DNN
+
+How RNNs represent the past?
+* Recurrent connection - this connects the hidden layer to the fixed size state.
+* Clevel optmisation
