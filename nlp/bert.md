@@ -18,6 +18,15 @@ How many cats does he have? -> 5 / who's He?
 * Paraphrasing: Equival sentence same meaning
 * SQuAD: Answer questions
 * Cloze Test: Fill in the blanks
+* GLUE: meta analysis across a number of tasks
+
+### Differences to other models
+* Peters et al. looks forward and back independently unlike BERT. 
+* More general (same general architecture leads to less time spent).
+* Creates more all encompassing solution than previous models. 
+* Elmo is using bidirectional LSTMs whereas BERT uses bidirectional transformer? 
+* Fine-tuning approaches try to use transfer learning to update the model for the specific task.
+* Basically unlimited data available for unsupervised pre-training. However, supervised tasks effective with large datasets. Therefore, transfer learning from supervised learning is possible. The takeaway is that this general approach will work on supervised tasks as well. 
 
 
 
