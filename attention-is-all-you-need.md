@@ -17,3 +17,11 @@
 * The fundamental sequential computation problem is just an inherent quality of the system. I don't know the word you say till you say it. 
 * Attention allows to upweight and downweight things in the sequence irrelevant of how far back in the past they were. 
 * Transformer also known as "Fully Attentive Network", no recurrence so no sequential dependencies. 
+* Good transformer explanation: http://nlp.seas.harvard.edu/2018/04/03/attention.html
+
+## Background
+
+* Coreference resolution: if the pronoun and subject are further apart it will take more time to say they are related. 
+* Self-attention: should up-weight parts of a sentence more relevant to the task at hand and down-weight the irrelevant areas. E.g. in reading comprehension look for the answer. 
+* End-to-end memory networks: still recurrence (passing hidden weight to specific items) but instead of happening at embedding layer, it's happening at attention layer? 
+* Tranformer: first transduction model relying entirely on self-attention.
