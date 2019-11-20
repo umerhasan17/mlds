@@ -57,7 +57,16 @@
 * Softmax normalises and sums probabilities to 1.
 * Multiply softmax weight by value to drown out irrelevant words and keep the important ones. 
 * Sum up the weight values.
-* Multi-head attention: 
+
+### Multi-head attention
+* Linear units are 3-D (tensors).
+* Scaled dot product attention is 2-D (vector) and h is the number of dimensions.
+* Concat converts vector into scalar.
+* Allows to look at sequence simultaneously
+* Dot product gets large - for large values of d<sub>k</sub>, very small gradients hence it is normalised by division. 
+* DECODER ATTENTION LAYERS: Queries are trained from the previous decoder layer (i.e. output) whereas keys and values are trained from the encoder output.
+* ENCODER ATTENTION LAYERS: These use self-attention everything comes from previous encoder layer. 
+
 
 
 * Auto regressive: consumes previously generated symbol. Depends on "thought vector" + previous word. 
