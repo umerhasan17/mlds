@@ -14,11 +14,10 @@ Input: Roger has 5 cats.
 Does he have dogs? -> I don't know
 How many cats does he have? -> 5 / who's He?
 
-### Paraphrasing
+### Other types of tests:
+* Paraphrasing: Equival sentence same meaning
+* SQuAD: Answer questions
+* Cloze Test: Fill in the blanks
 
-Equival sentence same meaning
 
-### SQuAD
-
-Answer questions
 
