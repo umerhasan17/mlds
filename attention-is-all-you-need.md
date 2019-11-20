@@ -66,11 +66,21 @@
 * Dot product gets large - for large values of d<sub>k</sub>, very small gradients hence it is normalised by division. 
 * DECODER ATTENTION LAYERS: Queries are trained from the previous decoder layer (i.e. output) whereas keys and values are trained from the encoder output.
 * ENCODER ATTENTION LAYERS: These use self-attention everything comes from previous encoder layer. 
-
-
-
 * Auto regressive: consumes previously generated symbol. Depends on "thought vector" + previous word. 
+
+### Position wise feed forward networks
+* 2 linear transformations with RELU activation in between
+
+### Embeddings & softmax
+* Weight matrix for both embedding layers is the same implying the vocabulary for the input and output must be the same otherwise the same matrix can't be shared. 
+
+### Positional encoding
+* Vector unique for each word in a position, closer positions are similar to other close positions. 
+* Fixed transformation to get to another position. 
+* Each dimension corresponds to a sinusoid. 
+* Results similar to learned embeddings. 
 * Input embeddings: semantics? 
 * Output embeddings: vocabulary of the output then produce probabilities based off all words.  
-* Stacked self attention: 
-* Multi-head attention: 
+
+## Why self-attention
+
