@@ -27,6 +27,14 @@ How many cats does he have? -> 5 / who's He?
 * Elmo is using bidirectional LSTMs whereas BERT uses bidirectional transformer? 
 * Fine-tuning approaches try to use transfer learning to update the model for the specific task.
 * Basically unlimited data available for unsupervised pre-training. However, supervised tasks effective with large datasets. Therefore, transfer learning from supervised learning is possible. The takeaway is that this general approach will work on supervised tasks as well. 
+* Indepth comparisong to OpenAI GPT in later section because that uses the same transformer model whereas ELMO uses bidirectional LSTMs. STILL WHAT'S THE DIFFERENCE? 
+
+## BERT
+
+### Architecture
+* 
+
+### Input Representation
 
 
 
