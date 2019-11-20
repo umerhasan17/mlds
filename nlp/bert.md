@@ -19,6 +19,7 @@ How many cats does he have? -> 5 / who's He?
 * SQuAD: Answer questions
 * Cloze Test: Fill in the blanks
 * GLUE: meta analysis across a number of tasks
+* BLUE: not best metric as good score doesn't imply human readable. 
 
 ### Differences to other models
 * Peters et al. looks forward and back independently unlike BERT. 
