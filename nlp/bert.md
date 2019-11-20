@@ -32,7 +32,9 @@ How many cats does he have? -> 5 / who's He?
 ## BERT
 
 ### Architecture
-* 
+* Multi layer BTE based on original implementation in Attention is all you need. But only for the encoder not the decoder. 
+* Parameters: L = encoder units, H = embedding length, A = attention heads (simultaneously learning, trained independently)
+* GPT only looks in the past, BERT looks in past + future. 
 
 ### Input Representation
 
