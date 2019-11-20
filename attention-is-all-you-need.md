@@ -41,6 +41,23 @@
 * Each segment has the multi head attention.
 * Each segment has the feed forward neural network.
 * Each segment also has the masked multi-head attention. This takes in just the output embeddings. Output of this is combined with the output of the encoder. 
+* Modify self-attention sub-layer in decoder to prevent leaks from subsequent positions (can't look at the words being guessed). This is known as MASKING hence masked multi head attention. 
+* Shifting right means can't look at the current position word in output embeddings. 
+
+### Attention
+
+* Refer to jalllamar illustrated transformer blog.
+* Function mapping a query (vector) and a set of key-value pairs (vector) to an output. 
+* Query = vector projections from trained matrix, dim(matrix) = 64
+* Key = vector projection from same trained matrix
+* Value = from another trained matrix (length of embedding)
+* Output computed as weighted sum of values. 
+* Weight computed by a compatibility function of the query with the corresponding key. 
+* Scaled dot product attention: query . key. 
+* Softmax normalises and sums probabilities to 1.
+* Multiply softmax weight by value to drown out irrelevant words and keep the important ones. 
+* Sum up the weight values.
+* Multi-head attention: 
 
 
 * Auto regressive: consumes previously generated symbol. Depends on "thought vector" + previous word. 
