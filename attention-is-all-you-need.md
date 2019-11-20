@@ -25,3 +25,26 @@
 * Self-attention: should up-weight parts of a sentence more relevant to the task at hand and down-weight the irrelevant areas. E.g. in reading comprehension look for the answer. 
 * End-to-end memory networks: still recurrence (passing hidden weight to specific items) but instead of happening at embedding layer, it's happening at attention layer? 
 * Tranformer: first transduction model relying entirely on self-attention.
+
+## Model architecture
+
+### Encoder 
+* Modelling words -> vector
+* 6 segments
+* Each segment has the multi head attention
+* Each segment has a feed forward neural network
+* Residual connection around each of the 2 sub layers - feed back in the untransformed version as well as the multi-head attention. Then take the normalization of both. 
+
+### Decoder
+* vector -> first ouput, second output, third output... 
+* 6 segments
+* Each segment has the multi head attention.
+* Each segment has the feed forward neural network.
+* Each segment also has the masked multi-head attention. This takes in just the output embeddings. Output of this is combined with the output of the encoder. 
+
+
+* Auto regressive: consumes previously generated symbol. Depends on "thought vector" + previous word. 
+* Input embeddings: semantics? 
+* Output embeddings: vocabulary of the output then produce probabilities based off all words.  
+* Stacked self attention: 
+* Multi-head attention: 
