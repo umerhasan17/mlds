@@ -25,17 +25,24 @@ How many cats does he have? -> 5 / who's He?
 * Peters et al. looks forward and back independently unlike BERT. 
 * More general (same general architecture leads to less time spent).
 * Creates more all encompassing solution than previous models. 
-* Elmo is using bidirectional LSTMs whereas BERT uses bidirectional transformer? 
+* Elmo is using bidirectional LSTMs with attention whereas BERT uses bidirectional transformer? 
 * Fine-tuning approaches try to use transfer learning to update the model for the specific task.
 * Basically unlimited data available for unsupervised pre-training. However, supervised tasks effective with large datasets. Therefore, transfer learning from supervised learning is possible. The takeaway is that this general approach will work on supervised tasks as well. 
-* Indepth comparisong to OpenAI GPT in later section because that uses the same transformer model whereas ELMO uses bidirectional LSTMs. STILL WHAT'S THE DIFFERENCE? 
+* Indepth comparisong to OpenAI GPT in later section because that uses the same transformer model whereas ELMO uses bidirectional LSTMs. STILL WHAT'S THE DIFFERENCE? OpenAI is not bidirectional (uses constrained self-attention).
+* BERT is similar to how speech production works but not perception because in production we know what words will come after. 
 
 ## BERT
+
+* BERT can move between tasks very quickly. 
+* BERT is a statistical model for word to come next compared to Attention paper which is a sequence to sequence model. BERT only uses the encoder. 
 
 ### Architecture
 * Multi layer BTE based on original implementation in Attention is all you need. But only for the encoder not the decoder. 
 * Parameters: L = encoder units, H = embedding length, A = attention heads (simultaneously learning, trained independently)
 * GPT only looks in the past, BERT looks in past + future. 
+* L = number of blocks stacked.
+* H = size of input embedding + hidden size.
+* A = self-attention heads.
 
 ### Input Representation
 
