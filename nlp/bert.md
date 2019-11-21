@@ -20,6 +20,7 @@ How many cats does he have? -> 5 / who's He?
 * Cloze Test: Fill in the blanks
 * GLUE: meta analysis across a number of tasks
 * BLUE: not best metric as good score doesn't imply human readable. 
+* Creating random words. "I have a wug. I buy another one. I have 2 ?"
 
 ### Differences to other models
 * Peters et al. looks forward and back independently unlike BERT. 
@@ -49,5 +50,21 @@ How many cats does he have? -> 5 / who's He?
 * Using learned position embeddings with 'supported sequence lengths' up to 512 tokens. 
 * The first word (token of every sentnece) is a label which tells you the class of the sentence. 
 * There are special \[SEP\] tokens to split sentences. 
+* WordPiece embeddings used.
 
 ### Pre-training
+* Masked LM
+* Next Sentence Prediction
+* GELU Activation (Gaussian Error Linear Units) weights inputs by magnitude rather than sign. 
+
+### Fine-tuning
+* Large datasets reduces the sensitivity to hyperparameters (however need lots of training examples)
+* Fine-tuning typically very fast so reasonable to use large datasets (100k examples)
+
+### BERT vs OpenAIGPT
+* BERT trained on wikipedia corpus as well
+* BERT learns \[SEP\] and \[CLS\] and setence A/B embeddings during pre-training. 
+* BERT trained with batch size of 128k words vs GPT with 32k
+* BERT chooses a task-specific fine-tuning learning rate, GPT used same learning rate of 5e-5 for all fine-tuning. 
+
+## Experiments
