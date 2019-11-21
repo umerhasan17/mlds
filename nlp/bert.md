@@ -45,6 +45,9 @@ How many cats does he have? -> 5 / who's He?
 * A = self-attention heads.
 
 ### Input Representation
+* Can take 2 inputs and transform into 1 input sequence. Constructed by summing the corresponding token, segment and position embeddings. 
+* Using learned position embeddings with 'supported sequence lengths' up to 512 tokens. 
+* The first word (token of every sentnece) is a label which tells you the class of the sentence. 
+* There are special \[SEP\] tokens to split sentences. 
 
-
-
+### Pre-training
