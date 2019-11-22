@@ -77,7 +77,7 @@ Tackle using feature engineering or let the model engineer its own features duri
 
 2 key ideas:
 1. RNNs learn a compact hidden state that represents the past.
-2. The input to an RNN is a concat of the original stateless input + hidden state.
+2. The input to an RNN is a concat of the original stateless input + hidden state. = 2 INPUTS PER CELL
  
 > THE HIDDEN STATE IS UPDATED DURING PREDICTION, unlike a DNN
 
@@ -89,6 +89,16 @@ How RNNs represent the past?
 
 Limitations of RNNs:
 * Models don't understand variable scope. For example in the Shakespeare play generation model, actors that have not entered the scene start speaking. 
-* The exploding / vanishing gradient problem where less recent data is forgotten and has no effect on the current sequence step. This can be solved using Long Short Term Memory (LSTM) or Gated Recurrent Unit (GRU). They keep gated modules. 
-* RELU or regularization can help mitigate this problem. 
+* The exploding / vanishing gradient problem where less recent data is forgotten and has no effect on the current sequence step. This can be solved using Long Short Term Memory (LSTM) or Gated Recurrent Unit (GRU). They keep gated modules.
+* RELU or regularization can help mitigate this problem. OR could have a very long sequence length which is not feasible. 
 
+### Long Short Term Memory (LSTMs)
+* Looks exactly like RNN on high level
+* 3 inputs 2 outputs using second state vector C (cell state / LSTM memory)
+* C allows information to pass through with less changes (similar to a conveyor belt).
+* 4 weight matrices
+* Forget gate - what data to remove from cell state.
+* Update gate - what new data to expose to cell state.
+* Output gate - what part of cell state to expose to hidden state.
+
+* Gated recurrent unit do this in a  more efficient manner. Yields similar performance. (3 weight matrices).
