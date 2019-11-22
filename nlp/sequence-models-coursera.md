@@ -83,9 +83,12 @@ Tackle using feature engineering or let the model engineer its own features duri
 
 How RNNs represent the past?
 * Recurrent connection - this connects the hidden layer to the fixed size state.
-* Clevel optmisation
+* Clevel optmisation - compute average of partial derivatives because more partial derivates than updates? Hence backprop through time. 
 
 > Deep RNNs can offer more insight but are harder to optimise. 
 
 Limitations of RNNs:
-* The exploding gradient problem where less recent data is forgotten and has no effect on the current sequence step. This can be solved using Long Short Term Memory (LSTM) or Gated Recurrent Unit (GRU). They keep gated modules. 
+* Models don't understand variable scope. For example in the Shakespeare play generation model, actors that have not entered the scene start speaking. 
+* The exploding / vanishing gradient problem where less recent data is forgotten and has no effect on the current sequence step. This can be solved using Long Short Term Memory (LSTM) or Gated Recurrent Unit (GRU). They keep gated modules. 
+* RELU or regularization can help mitigate this problem. 
+
