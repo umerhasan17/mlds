@@ -27,6 +27,8 @@ Autocorrelation graphs can reveal dependencies (how much lag is there in the dom
 * Sequence regressor specifies which model function to retrieve and also compares against a benchmark. 
 * All model functions accept features, mode and params. 
 
+> ```x = tf.reshape(features[TIMESERIES_COL], [-1, N_INPUTS, 1])``` Why is this reshape necessary? Features tensor has rank 2 but rnn needs rank 3 tensor. 
+
 ## Different types of models
 
 ### Linear Model
@@ -101,4 +103,9 @@ Limitations of RNNs:
 * Update gate - what new data to expose to cell state.
 * Output gate - what part of cell state to expose to hidden state.
 
-* Gated recurrent unit do this in a  more efficient manner. Yields similar performance. (3 weight matrices).
+* Gated recurrent unit (GRU) do this in a  more efficient manner. Yields similar performance. (3 weight matrices).
+
+### Deep RNNs
+* RNNs with many layers that take outputs of previous layers as inputs. 
+* Take significantly more time to compute.
+* Can take an average of loss functions of all layers for final loss function. How many layers to take into account? That is a hyperparameter K. 
