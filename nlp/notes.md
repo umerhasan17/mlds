@@ -23,3 +23,7 @@
 * Add stemming or lemmatization
 * Use models other than logistic regression
 * The accuracy gain from deep learning models is slight but significant for text classification.
+
+# Useful links
+
+* Linguistics terminology: https://faculty.washington.edu/ebender/papers/100things.pdf
