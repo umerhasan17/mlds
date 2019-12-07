@@ -1,0 +1,1 @@
+> Single Value Decomposition is not nearly as famous as it should be. - Gilbert Strang
