@@ -3,6 +3,14 @@
 * Neural network with word2vec embeddings
 * First text 
 
+## Stop words
+* There is not single list of stop words
+* They're different for different use cases e.g. identifying topics and language models 
+
+## Stemming + Lemmatization
+* Stemming faster and cruder
+* Techniques are langauge dependent for example langauges with more complex morphologies may show bigger benefits e.g. Sanskrit.  
+
 ## Neural Network with Word2Vec
  * Bag of words uses 1 hot encoding for every single word in input (sparse 1 hot encoded vector).
  * Neural networks have a dense representation (using word2vec embeddings).
