@@ -1,17 +1,13 @@
 from collections import defaultdict
 
 import numpy as np
-import pandas as pd
-import nltk
 from nltk import pos_tag
 from nltk.corpus import stopwords
 from nltk.corpus import wordnet as wn
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from sklearn import model_selection, naive_bayes, svm
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics import accuracy_score
-from sklearn.preprocessing import LabelEncoder
+
 
 def sentence_preprocessing(Corpus, column_name, output_column_name):
     print("Preprocessing")
