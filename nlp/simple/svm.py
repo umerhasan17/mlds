@@ -1,7 +1,7 @@
 from nlp_helper_functions import sentence_preprocessing, word_vectorization
 
 import pandas as pd
-from sklearn import model_selection, naive_bayes
+from sklearn import model_selection, svm
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
 
@@ -17,7 +17,7 @@ Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus[proce
 
 (Train_X_Tfidf, Test_X_Tfidf) = word_vectorization(Corpus, processed_column, Train_X, Test_X)
 
-Naive = naive_bayes.MultinomialNB()
-Naive.fit(Train_X_Tfidf,Train_Y)
-predictions_NB = Naive.predict(Test_X_Tfidf)
-print("Naive Bayes Accuracy Score -> ",accuracy_score(predictions_NB, Test_Y)*100)
+SVM = svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto')
+SVM.fit(Train_X_Tfidf,Train_Y)
+predictions_SVM = SVM.predict(Test_X_Tfidf)
+print("SVM Accuracy Score -> ",accuracy_score(predictions_SVM, Test_Y)*100)
