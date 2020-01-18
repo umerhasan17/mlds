@@ -38,10 +38,10 @@ def sentence_preprocessing(Corpus, column_name, output_column_name):
         Corpus.loc[index, output_column_name] = str(Final_words)
     return Corpus
 
-def word_vectorization(Corpus, column_name, Train_X, Test_X):
+def word_vectorization(Corpus, column, Train_X, Test_X):
     print("Word vectorization")
     Tfidf_vect = TfidfVectorizer(max_features=5000)
-    Tfidf_vect.fit(Corpus['text_final'])
+    Tfidf_vect.fit(Corpus[column])
     Train_X_Tfidf = Tfidf_vect.transform(Train_X)
     Test_X_Tfidf = Tfidf_vect.transform(Test_X)
     return (Train_X_Tfidf, Test_X_Tfidf)
