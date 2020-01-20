@@ -6,11 +6,9 @@ from nltk.corpus import stopwords
 from nltk.corpus import wordnet as wn
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
-from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 def sentence_preprocessing(Corpus, column_name, output_column_name):
-    print("Preprocessing")
     # Step - a : Remove blank rows if any.
     Corpus[column_name].dropna(inplace=True)
     # Step - b : Change all the text to lower case. This is required as python interprets 'dog' and 'DOG' differently
@@ -38,10 +36,8 @@ def sentence_preprocessing(Corpus, column_name, output_column_name):
         Corpus.loc[index, output_column_name] = str(Final_words)
     return Corpus
 
-def word_vectorization(Corpus, column, Train_X, Test_X):
-    print("Word vectorization")
-    Tfidf_vect = TfidfVectorizer(max_features=5000)
-    Tfidf_vect.fit(Corpus[column])
-    Train_X_Tfidf = Tfidf_vect.transform(Train_X)
-    Test_X_Tfidf = Tfidf_vect.transform(Test_X)
-    return (Train_X_Tfidf, Test_X_Tfidf)
+def vectorize(Vectorizer, Corpus, column, Train_X, Test_X):
+    Vectorizer.fit(Corpus[column])
+    Train_X_Vectorized = Vectorizer.transform(Train_X)
+    Test_X_Vectorized = Vectorizer.transform(Test_X)
+    return (Train_X_Vectorized, Test_X_Vectorized)

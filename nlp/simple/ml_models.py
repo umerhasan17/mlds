@@ -1,9 +1,9 @@
-from nlp_helper_functions import sentence_preprocessing, word_vectorization
+from nlp_helper_functions import sentence_preprocessing, vectorize
 
 import pandas as pd
 from sklearn import model_selection, naive_bayes, svm
-from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import accuracy_score
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 
 
 def main():
@@ -11,33 +11,28 @@ def main():
     processed_column = 'text_final'
     target = 'target'
 
+    print("Preprocessing...")
     Corpus = sentence_preprocessing(pd.read_csv('../disaster-tweets.csv'), data_column, processed_column)
+    Vectorizers = [TfidfVectorizer(max_features=5000), CountVectorizer()]
+    Vectorizer_Columns = ["tfidf", "count"]
+    Models = [naive_bayes.MultinomialNB(), svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto')]
 
-    print("Columns: ", Corpus.columns)
-    print("Split data")
+    print("Splitting data...")
     Train_X, Test_X, Train_Y, Test_Y = model_selection.train_test_split(Corpus[processed_column],Corpus[target],test_size=0.3)
+    for Model in Models:
+        for index, Vectorizer in enumerate(Vectorizers):
+            Corpus[Vectorizer_Columns[index]] = Corpus[processed_column]
+            print("Vectorizing", "...")
+            (Train_X_Vectorized, Test_X_Vectorized) = vectorize(Vectorizer, Corpus, Vectorizer_Columns[index], Train_X, Test_X)
+            print("Generating predictions", "...")
+            score = generate_predictions(Model, Train_X_Vectorized, Test_X_Vectorized, Train_Y, Test_Y)
+            print(Model, " with vectorizer ", Vectorizer_Columns , " Accuracy Score -> ", score)
 
-    (Train_X_Tfidf, Test_X_Tfidf) = word_vectorization(Corpus, processed_column, Train_X, Test_X)
+def generate_predictions(Model, Train_X_Vectorized, Test_X_Vectorized, Train_Y, Test_Y):
+    Model.fit(Train_X_Vectorized,Train_Y)
+    predictions = Model.predict(Test_X_Vectorized)
+    score = accuracy_score(predictions, Test_Y)*100
+    return score  
 
-    naive_bayes_model(Train_X_Tfidf, Test_X_Tfidf, Train_Y, Test_Y)
-    svm_model(Train_X_Tfidf, Test_X_Tfidf, Train_Y, Test_Y)
-
-
-def naive_bayes_model(Train_X_Tfidf, Test_X_Tfidf, Train_Y, Test_Y):
-    Naive = naive_bayes.MultinomialNB()
-    Naive.fit(Train_X_Tfidf,Train_Y)
-    predictions_NB = Naive.predict(Test_X_Tfidf)
-    score = accuracy_score(predictions_NB, Test_Y)*100
-    print("Naive Bayes Accuracy Score -> ", score)
-    return score
-    
-    
-def svm_model(Train_X_Tfidf, Test_X_Tfidf, Train_Y, Test_Y):
-    SVM = svm.SVC(C=1.0, kernel='linear', degree=3, gamma='auto')
-    SVM.fit(Train_X_Tfidf,Train_Y)
-    predictions_SVM = SVM.predict(Test_X_Tfidf)
-    score = accuracy_score(predictions_SVM, Test_Y)*100
-    print("SVM Accuracy Score -> ", score)
-    return score
 
 main()
