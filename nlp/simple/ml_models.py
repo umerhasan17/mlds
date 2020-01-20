@@ -26,7 +26,7 @@ def main():
             (Train_X_Vectorized, Test_X_Vectorized) = vectorize(Vectorizer, Corpus, Vectorizer_Columns[index], Train_X, Test_X)
             print("Generating predictions", "...")
             score = generate_predictions(Model, Train_X_Vectorized, Test_X_Vectorized, Train_Y, Test_Y)
-            print(Model, " with vectorizer ", Vectorizer_Columns , " Accuracy Score -> ", score)
+            print(Model, " with vectorizer ", Vectorizer_Columns[index] , " Accuracy Score -> ", score)
 
 def generate_predictions(Model, Train_X_Vectorized, Test_X_Vectorized, Train_Y, Test_Y):
     Model.fit(Train_X_Vectorized,Train_Y)
