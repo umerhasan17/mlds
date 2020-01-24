@@ -4,4 +4,4 @@ __pycache__
 stock_dfs
 nlp_env
 pytorch/MNIST
-nlp/.venv/*
+data/
