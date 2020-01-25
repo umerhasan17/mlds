@@ -5,3 +5,4 @@ stock_dfs
 nlp_env
 pytorch/MNIST
 data/
+*.npy

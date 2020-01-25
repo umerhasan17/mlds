@@ -10,6 +10,8 @@ pandas = "*"
 tqdm = "*"
 opencv-python = "*"
 jupyter = "*"
+matplotlib = "*"
+torch = "*"
 
 [requires]
 python_version = "3.8"
